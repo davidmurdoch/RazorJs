@@ -1,6 +1,6 @@
 {
-	"name": "Razor.js",
-	"description": "Razor",
+	"name": "razor",
+	"description": "Razor.js",
 	"version": "0.1.0",
 	"author": "David Murdoch <david@davidmurdoch.com>",
 	"maintainers": [
