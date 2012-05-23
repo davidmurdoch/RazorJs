@@ -1,0 +1,21 @@
+{
+	"name": "Razor.js",
+	"description": "Razor",
+	"version": "0.1.0",
+	"author": "David Murdoch <david@davidmurdoch.com>",
+	"maintainers": [
+		{
+			"name": "David Murdoch",
+			"email": "david@davidmurdoch.com"
+		}
+	],
+	"homepage": "https://davidmurdoch.com/projects/razorjs",
+	"repository": {
+		"type": "git",
+		"url": "https://davidmurdoch@github.com/davidmurdoch/RazorJs.git"
+	},
+	"engines": {
+		"node": ">= 0.6.3"
+	},
+	"main": "./index.js"
+}
