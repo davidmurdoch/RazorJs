@@ -1,21 +1,44 @@
 {
 	"name": "razor",
-	"description": "Razor.js",
+	"title": "Razor.js",
 	"version": "0.1.0",
-	"author": "David Murdoch <david@davidmurdoch.com>",
-	"maintainers": [
+	"description": "A templating engine that lets you use javascript directly in your templates with a single `@` character.",
+	"homepage": "https://github.com/davidmurdoch/RazorJs",
+	"keywords": ["razor", "template"],
+	"author": {
+		"name": "David Murdoch",
+		"web": "http://davidmurdoch.com"
+	},
+	"bugs": {
+		"url": "https://github.com/davidmurdoch/RazorJs/issues",
+		"email": "razor-bugs@davidmurdoch.com"
+	},
+	"licenses": [
 		{
-			"name": "David Murdoch",
-			"email": "david@davidmurdoch.com"
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/mit-license.php"
 		}
 	],
-	"homepage": "https://davidmurdoch.com/projects/razorjs",
-	"repository": {
+	"repository":{
 		"type": "git",
-		"url": "https://davidmurdoch@github.com/davidmurdoch/RazorJs.git"
+		"url": "git://github.com/davidmurdoch/RazorJs.git"
 	},
 	"engines": {
 		"node": ">= 0.6.3"
 	},
-	"main": "./index.js"
+	"dependencies": {},
+	"devDependencies": {
+    	"qunit": "*",
+    	"walk": "*"
+	},
+	"scripts": {
+		"start": "node index.js",
+		"test": "test.js"
+	},
+	"main": "index",
+	"directories": {
+		"test": "test",
+		"lib": "lib",
+		"bin": "bin"
+	}
 }
