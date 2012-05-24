@@ -19,8 +19,14 @@ walker.on("file", function(root, fileStats, next){
 walker.on("end", function(){
 
 	testrunner.run(tests, function(err, report){
-		console.log(err);
-		console.dir(report);
+		if(err){
+			console.error(err);
+			console.dir(report);
+		}
+		else{
+			console.log("DONE");
+			console.dir(report);
+		}
 	});
 	
 });
