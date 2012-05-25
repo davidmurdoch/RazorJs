@@ -6,7 +6,7 @@ var HtmlString = require("../lib/htmlstring.js");
 module("Html");
 
 test("test html.js functions", function() {
-	expect(7);
+	expect(12);
 	
 	var string = "<string>";
 	var htmlstring = Html.Raw(string);
@@ -22,5 +22,14 @@ test("test html.js functions", function() {
 	
 	equal(Html.toString(undefined), "", "Html.toString(undefined) returns an empty string");
 	
-	raises( function(){ Html.Encode( {} ) }, "Html.Encode throws if non-string is passed in" );
+	equal( Html.Encode( 1.234 ), "1.234", "Html.Encode converts Numbers to strings correctly" );
+	
+	equal( Html.Encode( true ), "true", "Html.Encode converts Booleans to strings correctly" );
+	
+	equal( Html.Encode( {} ), "[object Object]", "Html.Encode converts Objects to strings correctly" );
+	equal( Html.Encode( {"foo":"bar"} ), "[object Object]", "Html.Encode converts Objects to strings correctly" );
+	
+	equal( Html.Encode( [] ), "", "Html.Encode converts Arrays to strings correctly" );
+	
+	equal( Html.Encode( ["uno","dos"] ), "uno,dos", "Html.Encode converts Arrays to strings correctly" );
 });
