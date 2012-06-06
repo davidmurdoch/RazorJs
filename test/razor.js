@@ -5,7 +5,9 @@ var Razor = testObject;
 module("Razor");
 
 test("test razor.js functions", function() {
-	expect(11);
+
+	expect(15);
+
 	var compile, object = {};
 	try{
 
@@ -78,6 +80,27 @@ test("test razor.js functions", function() {
 		"</div>");
 		object = {"src": "//localhost/img.png"};
 		equal(compile(object), "<div>\n<img src='//localhost/img.png' />\n</div>", "Test template with self-closing tag");
+
+
+		compile = Razor.compile("@@escaped");
+		object = {};
+		equal(compile(object), "@escaped", "Simple @ escape");
+
+
+		compile = Razor.compile("@@@escaped");
+		object = {"escaped":"works"};
+		equal(compile(object), "@works", "Complex @ escape");
+
+
+		compile = Razor.compile("@@@@@@@@hello");
+		object = {};
+		equal(compile(object), "@@@@hello", "Multiple @ escapes");
+
+
+		compile = Razor.compile("@if(true){<span>@@@@hello</span>}");
+		object = {};
+		equal(compile(object), "<span>@@hello</span>", "Nested @ escapes in blocks");
+
 	}
 	catch(e){
 		console.log(compile.fn);
