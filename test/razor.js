@@ -6,7 +6,7 @@ module("Razor");
 
 test("test razor.js functions", function() {
 
-	expect(15);
+	expect(16);
 
 	var compile, object = {};
 	try{
@@ -92,14 +92,18 @@ test("test razor.js functions", function() {
 		equal(compile(object), "@works", "Complex @ escape");
 
 
-		compile = Razor.compile("@@@@@@@@hello");
+		compile = Razor.compile("@@@@@@@@escaped");
 		object = {};
-		equal(compile(object), "@@@@hello", "Multiple @ escapes");
+		equal(compile(object), "@@@@escaped", "Multiple @ escapes");
 
 
-		compile = Razor.compile("@if(true){<span>@@@@hello</span>}");
+		compile = Razor.compile("@if(true){<span>@@@@escaped</span>}");
 		object = {};
-		equal(compile(object), "<span>@@hello</span>", "Nested @ escapes in blocks");
+		equal(compile(object), "<span>@@escaped</span>", "Nested @ escapes in blocks");
+
+		compile = Razor.compile("email@@escaped.com value='@foo'");
+		object = {"foo":"b@r"};
+		equal(compile(object), "email@escaped.com value='b@r'", "Simple @ escape with additional vars");
 
 	}
 	catch(e){

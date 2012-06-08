@@ -12,7 +12,7 @@ walker.on("file", function(root, fileStats, next){
 		},
 	    "tests": "./test/" + fileStats.name
 	});
-	
+
 	next();
 });
 
@@ -28,5 +28,5 @@ walker.on("end", function(){
 			console.dir(report);
 		}
 	});
-	
+
 });
