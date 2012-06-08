@@ -6,7 +6,7 @@ module("Razor");
 
 test("test razor.js functions", function() {
 
-	expect(16);
+	expect(17);
 
 	var compile, object = {};
 	try{
@@ -104,6 +104,11 @@ test("test razor.js functions", function() {
 		compile = Razor.compile("email@@escaped.com value='@foo'");
 		object = {"foo":"b@r"};
 		equal(compile(object), "email@escaped.com value='b@r'", "Simple @ escape with additional vars");
+
+
+		compile = Razor.compile("@HTML.Raw( JSON.stringify(obj) )");
+		object = {"obj": {"foo":"bar"}};
+		equal(compile(object), "{\"foo\":\"bar\"}", "Can we use the JSON global?");
 
 	}
 	catch(e){

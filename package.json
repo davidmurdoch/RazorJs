@@ -27,7 +27,8 @@
 		"node": ">= 0.6.3"
 	},
 	"dependencies": {
-		"node-proxy": "git://github.com/davidmurdoch/node-proxy.git"
+		"node-proxy": "git://github.com/davidmurdoch/node-proxy.git",
+		"lodash": "0.3.x"
 	},
 	"devDependencies": {
     	"qunit": "*",
