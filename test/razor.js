@@ -6,10 +6,9 @@ module("Razor");
 
 test("test razor.js functions", function() {
 
-	expect(17);
+	expect(20);
 
-	var compile, object = {};
-	try{
+
 
 		compile = Razor.compile("<div>@message</div>");
 		object = {"message":"hello world"};
@@ -106,13 +105,19 @@ test("test razor.js functions", function() {
 		equal(compile(object), "email@escaped.com value='b@r'", "Simple @ escape with additional vars");
 
 
-		compile = Razor.compile("@HTML.Raw( JSON.stringify(obj) )");
+		compile = Razor.compile("@Html.Raw( JSON.stringify(obj) )");
 		object = {"obj": {"foo":"bar"}};
 		equal(compile(object), "{\"foo\":\"bar\"}", "Can we use the JSON global?");
 
-	}
-	catch(e){
-		console.log(compile.fn);
-	}
+		compile = Razor.compile();
+		object = {"obj": {"foo":"bar"}};
+		equal(compile(object), "", "Handle undefined template");
 
+		compile = Razor.compile("");
+		object = {"obj": {"foo":"bar"}};
+		equal(compile(object), "", "Handle empty template");
+
+		compile = Razor.compile(" ");
+		object = {"obj": {"foo":"bar"}};
+		equal(compile(object), " ", "Handle empty template 2");
 });
