@@ -6,7 +6,7 @@ var HtmlString = require("../lib/htmlstring.js");
 module("Html");
 
 test("test html.js functions", function() {
-	expect(12);
+	expect(14);
 
 	var string = "<string>";
 	var htmlstring = Html.Raw(string);
@@ -32,4 +32,14 @@ test("test html.js functions", function() {
 	equal( Html.Encode( [] ), "", "Html.Encode converts Arrays to strings correctly" );
 
 	equal( Html.Encode( ["uno","dos"] ), "uno,dos", "Html.Encode converts Arrays to strings correctly" );
+
+	equal( Html.encodeURI( "https://www.example.com/path?query=Thyme &time=again" ).toString(),
+		"https://www.example.com/path?query=Thyme%20&time=again",
+		"Html.encodeURI works as expected"
+	);
+
+	equal( Html.encodeURIComponent( "Thyme &time=again" ).toString(),
+		"Thyme%20%26time%3Dagain",
+		"Html.encodeURIComponent works as expected"
+	);
 });
