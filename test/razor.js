@@ -6,9 +6,7 @@ module("Razor");
 
 test("test razor.js functions", function() {
 
-	expect(20);
-
-
+	expect(21);
 
 		compile = Razor.compile("<div>@message</div>");
 		object = {"message":"hello world"};
@@ -120,4 +118,8 @@ test("test razor.js functions", function() {
 		compile = Razor.compile(" ");
 		object = {"obj": {"foo":"bar"}};
 		equal(compile(object), " ", "Handle empty template 2");
+
+		compile = Razor.compile("@nothing");
+		object = {"obj": {"foo":"bar"}};
+		equal(compile(object), "", "Proxy and undefined");
 });

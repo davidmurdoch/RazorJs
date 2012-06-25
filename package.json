@@ -1,7 +1,7 @@
 {
 	"name": "razor",
 	"title": "Razor.js",
-	"version": "0.1.0",
+	"version": "0.1.1alpha1",
 	"description": "A templating engine that lets you use javascript directly in your templates with a single `@` character.",
 	"homepage": "https://github.com/davidmurdoch/RazorJs",
 	"keywords": ["razor", "template"],
@@ -27,7 +27,7 @@
 		"node": ">= 0.6.3"
 	},
 	"dependencies": {
-		"node-proxy": "git://github.com/davidmurdoch/node-proxy.git",
+		"node-proxy": "0.6.x",
 		"lodash": "0.3.x"
 	},
 	"devDependencies": {
