@@ -4,7 +4,7 @@ var Razor = testObject;
 
 module("Razor");
 
-test("test razor.js functions", function() {
+test("test razor.js compile", function() {
 
 	expect(24);
 
@@ -131,5 +131,20 @@ test("test razor.js functions", function() {
 
 	compile = Razor.compile("<span>@replace.replace('replace','bueno')</span>");
 	equal(compile({"replace":"replace"}), "<span>bueno</span>", "Regex works");
+
+});
+
+asyncTest("test razor.js file functions", function() {
+	expect(2);
+
+	Razor.renderFile("test/templates/renderFile.razor", function( _, html){
+		equal(html, "html", "renderFile works");
+		start();
+	});
+
+	Razor.renderFile("test/templates/partial.razor", function( _, html ){
+		equal(html, "<span>\n\thtml\n</span>", "partials work");
+		start();
+	});
 
 });

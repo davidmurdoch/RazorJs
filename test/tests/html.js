@@ -1,7 +1,7 @@
 module = QUnit.module;
 
 var Html = testObject;
-var HtmlString = require("../lib/htmlstring.js");
+var HtmlString = require("../../lib/htmlstring.js");
 
 module("Html");
 
@@ -42,4 +42,5 @@ test("test html.js functions", function() {
 		"Thyme%20%26time%3Dagain",
 		"Html.encodeURIComponent works as expected"
 	);
+
 });

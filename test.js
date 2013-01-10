@@ -1,23 +1,41 @@
 var testrunner = require("qunit"),
 	walk = require("walk");
 
-var walker = walk.walk("./test", {followLinks: false}),
-	tests = [];
-walker.on("file", function(root, fileStats, next){
+var testFile = process.argv[2],
+	tests = []
 
+if (testFile){
 	tests.push({
 	    "code" : {
-    		"path" : "./lib/" + fileStats.name,
+    		"path" : "./lib/" + testFile,
     		"namespace": "testObject"
 		},
-	    "tests": "./test/" + fileStats.name
+	    "tests": "./test/tests/" + testFile
+	});
+	run();
+}
+else {
+
+	var walker = walk.walk("./test/tests", {followLinks: false});
+	walker.on("file", function(root, fileStats, next){
+
+		tests.push({
+		    "code" : {
+	    		"path" : "./lib/" + fileStats.name,
+	    		"namespace": "testObject"
+			},
+		    "tests": "./test/tests/" + fileStats.name
+		});
+
+		next();
 	});
 
-	next();
-});
+	walker.on("end", function(){
+		run();
+	});
+}
 
-walker.on("end", function(){
-
+function run(){
 	testrunner.run(tests, function(err, report){
 		if(err){
 			console.error(err);
@@ -28,5 +46,4 @@ walker.on("end", function(){
 			console.dir(report);
 		}
 	});
-
-});
+}
