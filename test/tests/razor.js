@@ -6,7 +6,9 @@ module("Razor");
 
 test("test razor.js compile", function() {
 
-	expect(24);
+	var object, compile;
+
+	expect(25);
 
 	compile = Razor.compile("<div>@message</div>");
 	object = {"message":"hello world"};
@@ -131,6 +133,12 @@ test("test razor.js compile", function() {
 
 	compile = Razor.compile("<span>@replace.replace('replace','bueno')</span>");
 	equal(compile({"replace":"replace"}), "<span>bueno</span>", "Regex works");
+
+	compile = Razor.compile("<span>@arr[0].prop.nope</span>");
+	var Obj = function(name){
+		this.prop = null;
+	};
+	equal(compile({"arr":[new Obj]}), "<span></span>", "array lookup to undefined/null returns empty string");
 
 });
 
