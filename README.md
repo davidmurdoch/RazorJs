@@ -1,9 +1,14 @@
-# This is VERY buggy. You probably shouldn't even try using it yet.
-
-
 # Razor - template engine
 
- Razor.js is based off of .net's Razor Templating Engine
+ Razor.js is based off of .Net's Razor Templating Engine.
+ 
+ This version is probably too slow and buggy for you to use in production. Oh, and template errors aren't handled very gracefully (or at all, sometimes). But hey, you can do things like:
+ 
+ ```html
+ <title>@title</title>
+ ```
+ 
+ and it will probably not break on you.
 
 ## License 
 
