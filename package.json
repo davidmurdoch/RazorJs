@@ -1,7 +1,7 @@
 {
 	"name": "razor",
 	"title": "Razor.js",
-	"version": "0.1.1alpha4",
+	"version": "0.1.2",
 	"description": "A templating engine that lets you use javascript directly in your templates with a single `@` character.",
 	"homepage": "https://github.com/davidmurdoch/RazorJs",
 	"keywords": ["razor", "template"],
