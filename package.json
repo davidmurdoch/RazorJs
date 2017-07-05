@@ -28,7 +28,7 @@
 	},
 	"dependencies": {
 		"nil": "0.0.7",
-		"node-proxy": "0.6.x",
+		"node-proxy": "1.0.0",
 		"lodash": "0.10.x"
 	},
 	"devDependencies": {
